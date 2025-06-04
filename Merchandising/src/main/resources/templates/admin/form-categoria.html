@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Formulario Categoría</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="https://preview.redd.it/ill-try-to-make-the-logo-look-close-to-games-logo-close-as-v0-224ft8qrcsdb1.png?width=640&crop=smart&auto=webp&s=3054f77f368ad74e5eebed6c60d1c6766c46ea2d"
+                    width="30%" class="rounded"
+                    alt="Logo">
+            </div>
+            <div id="navbar" class="navbar-right">
+                <a class="btn btn-danger mb-3" th:href="@{/admin/categoria/list-categoria}">
+                    <h4>Volver</h4>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <form method="post" th:action="@{/admin/categoria/submit}" th:object="${categoria}">
+                    <h1>
+                        <span th:text="${categoria.id} != null ? 'Editar' : 'Nueva'"></span> categoría
+                    </h1>
+
+                    <input type="hidden" th:field="*{id}" id="id" />
+                    <div class="form-group">
+                        <label for="nombre">Nombre de categoría</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre categoría"
+                            required="required" th:field="*{nombre}">
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

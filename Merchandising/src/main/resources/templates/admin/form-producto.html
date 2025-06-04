@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario Producto</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/admin/producto/}">Volver</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container" style="margin-top: 80px;">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8">
+				<form method="post" th:action="@{/admin/producto/submit}" th:object="${producto}">
+					<h1>
+						<span th:text="${producto.id} != null ? 'Editar' : 'Nuevo'"></span> producto
+					</h1>
+
+					<input type="hidden" th:field="*{id}" />
+
+					<div class="form-group">
+						<label for="nombre">Nombre</label>
+						<input type="text" class="form-control" id="nombre" th:field="*{nombre}" required />
+					</div>
+
+					<div class="form-group">
+						<label for="descripcion">Descripción</label>
+						<textarea class="form-control" id="descripcion" th:field="*{descripcion}" rows="3"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label for="imagen">URL de la imagen</label>
+						<input type="text" class="form-control" id="imagen" th:field="*{imagen}"></input>
+					</div>
+
+					<div class="form-group">
+						<label for="altImagen">descripcion de la imagen</label>
+						<input type="text" class="form-control" id="altImagen" th:field="*{altImagen}" ></input>
+					</div>
+
+					<div class="form-group">
+						<label for="precio">Precio (€)</label>
+						<input type="number" class="form-control" id="precio" th:field="*{precio}" step="0.01"
+							required />
+					</div>
+
+					<!--<div class="form-group">
+						<label for="fechaAlta">Fecha de alta</label>
+						<input type="date" class="form-control" id="fechaAlta" th:field="*{fechaAlta}" required />
+					</div>-->
+
+					<div class="form-group">
+						<label for="categoria">Categoría</label>
+						<select class="form-control" id="categoria" th:field="*{categoria}" required>
+							<option th:each="cat : ${categorias}" th:value="${cat.id}" th:text="${cat.nombre}"></option>
+						</select>
+					</div>
+
+					<button type="submit" class="btn btn-success">Enviar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

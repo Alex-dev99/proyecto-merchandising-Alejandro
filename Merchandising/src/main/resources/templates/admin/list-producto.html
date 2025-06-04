@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Productos</h1>
+
+    <a th:href="@{/admin/producto/nuevo}" class="btn btn-primary mb-3">Crear nuevo Producto</a>
+    <a th:href="@{/}" class="btn btn-secondary mb-3">Volver</a>
+
+    <div th:if="${param.error}" class="alert alert-danger">
+        No se puede eliminar el producto.
+    </div>
+
+    <table class="table table-bordered align-middle text-center">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+           <!--<th>Fecha de Alta</th>-->
+            <th>Imagen</th>
+            <th>Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prod : ${productos}">
+            <td th:text="${prod.id}"></td>
+            <td th:text="${prod.nombre}"></td>
+            <td th:text="${prod.descripcion}"></td>
+            <td th:text="${prod.precio} + ' €'"></td>
+            <td th:text="${prod.categoria?.nombre}"></td>
+            <!--<td th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></td>
+			<td>
+			  <span th:if="${prod.fechaAlta != null}" th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></span>
+			  <span th:unless="${prod.fechaAlta != null}">Sin fecha</span>
+			</td>
+			<td th:text="${prod.fechaAlta != null ? #dates.format(prod.fechaAlta, 'dd/MM/yyyy') : 'Sin fecha'}"></td>-->
+
+			
+
+            <td>
+                <img th:src="${prod.imagen}" th:alt="${prod.altImagen}" class="img-thumbnail" style="max-height: 80px;" />
+            </td>
+            <td>
+                <a th:href="@{/admin/producto/editar/{id}(id=${prod.id})}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal"
+                   th:attr="data-id=${prod.id}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal de confirmación de borrado -->
+<div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Borrar producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro que quieres borrar este producto?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a id="confirm-delete-btn" href="#" class="btn btn-danger">Sí</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var deleteModal = document.getElementById('delete-modal');
+        var confirmBtn = document.getElementById('confirm-delete-btn');
+
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            confirmBtn.href = '/admin/producto/borrar/' + id;
+        });
+    });
+</script>
+</body>
+</html>

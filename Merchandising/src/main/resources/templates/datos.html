@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario Producto</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top text-center">
+			<div class="container-fluid justify-content-center">
+				<div class="navbar-header col-md-4">
+					<a class="navbar-brand" href="index.html" th:href="@{/}">Volver</a>
+				</div>
+				<div class="col-md-4 d-flex justify-content-center">
+					<img src="https://preview.redd.it/ill-try-to-make-the-logo-look-close-to-games-logo-close-as-v0-224ft8qrcsdb1.png?width=640&crop=smart&auto=webp&s=3054f77f368ad74e5eebed6c60d1c6766c46ea2d"
+						width="50%" class="rounded"
+						alt="tienda de ultrakill, originalmente hiba a ser de one punch man pero el logo OPPAI no es que sea muy apropiado">
+				</div>
+			</div>
+		</nav>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<form method="post" action="#"> 		
+				<fieldset> 
+					<label class="titulo" for="nombre">Nombre y apellidos <span class="requerido">*</span></label> 
+					<div> 
+						 
+						<label for="nombre">Nombre</label> 	
+						<input id="nombre" name="nombre" value="" />	
+						<br>
+						<label for="apellido1">Primer apellido</label>
+						<input id="apellido1" name="apellido1" value="" /> 
+						<br>
+						<label for="apellido2">Segundo apellido</label> 
+						<input id="apellido2" name="apellido2" value="" />
+						
+					</div> 
+					<p class="ayuda">No te olvides de escribir también tu segundo apellido</p>
+				</fieldset> 
+				<br>
+				<br>
+				<fieldset> 
+					<label class="titulo" for="direccion">Dirección <span class="requerido">*</span></label> 
+					<div> 				
+						<label for="direccion">Calle, número, piso, puerta</label> 
+						<input id="direccion" name="direccion" value="" /> 
+						<br>
+						<label for="codigopostal">Código postal</label> 
+						<input id="codigopostal" name="codigopostal" value="" />
+						<br>
+						<label for="municipio">Municipio</label>
+						<input id="municipio" name="municipio" value="" /> 
+						 
+						<br>
+			
+						<label for="pais">País</label>
+						<select id="pais" name="pais"> 
+							<option value=""></option> 
+							<option value="pais1">Estados Unidos</option> 
+							<option value="pais2">España</option> 
+							<option value="pais3">Japon</option> 
+						</select> 
+						 			
+					</div> 
+					<p class="ayuda">El código postal es imprescindible para poder recibir los pedidos</p> 
+				</fieldset> 
+
+				<br>
+
+				<fieldset> 
+					<label class="titulo" for="email">Email</label> 
+					<div> 
+						<input id="email" name="email" value="" /> 
+					</div> 
+					<p class="ayuda">Asegúrate de que sea váfieldsetdo</p> 
+				</fieldset> 
+				<fieldset> 
+					<label class="titulo" for="telefonofijo">Teléfono <span class="requerido">*</span></label> 
+					<div> 				
+						
+						<label for="telefonofijo">Fijo</label>
+						<input id="telefonofijo" name="telefonofijo" value="" /> 
+						<br>
+						<label for="telefonomovil">Móvil</label> 	
+						<input id="telefonomovil" name="telefonomovil" value="" />		
+					</div> 
+					<p class="ayuda">Sin prefijo de país y sin espacios en blanco</p> 
+				</fieldset> 
+
+
+				<fieldset> 
+					<a href="index.html" th:href="@{/}" class="btn btn btn-danger">comprar y volver a la tienda</a> 
+				</fieldset> 
+
+			</form>
+</body>
