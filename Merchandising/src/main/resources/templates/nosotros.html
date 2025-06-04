@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Listado de Categorías</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top bg-dark">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html" th:href="@{/}">Volver</a>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container-fluid d-flex justify-content-center text-center">
+		<div class="d-flex justify-content-center">
+			<img src="data:image/png;base64,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"
+				width="30%" class="rounded" alt="new blood interactive, la empresa creadora de ultrakill entre otros">
+
+		</div>
+		<div class="container d-flex justify-content-center">
+			<br>
+			<h3>¿Que es New Blood Interactive?</h3>
+			<p>New Blood Interactive es un editor de videojuegos fundado en 2014. Es conocido por juegos como Ultrakill,
+				Dusk , Amid Evil y Faith: The Unholy Trinity.</p>
+			<p>fue fundada en 2014 por el diseñador principal Aaron Alexander, el programador principal Kreyg DeZago y
+				el director ejecutivo Dave Oshry.</p>
+			<p>en tiempos mas recientes, New blood cuenta con mas de 25 trabajadores bajo su manto</p>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="d-flex justify-content-center">
+			<img src="https://preview.redd.it/ill-try-to-make-the-logo-look-close-to-games-logo-close-as-v0-224ft8qrcsdb1.png?width=640&crop=smart&auto=webp&s=3054f77f368ad74e5eebed6c60d1c6766c46ea2d"
+				width="50%" class="rounded" alt="titulo de ultrakill">
+		</div>
+		<div class="container d-flex justify-content-center">
+			<br>
+			<h3>¿Que es Ultrakill?</h3>
+			<p>Ultrakill es un juego de disparos en primera persona de ritmo rápido que pone énfasis en el movimiento y
+				el estilo</p>
+			<p>El jugador debe recorrer una interpretación de las capas del infierno de Dante, con tres actos cada uno
+				compuesto por tres capas divididas en múltiples niveles</p>
+			<p>desarrollado por Arsi "Hakita" Patala y publicado por New Blood Interactive</p>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="d-flex justify-content-center">
+			<img src="https://i.scdn.co/image/ab6761610000e5eb296315fcc5ae8f7cfbbf7933" width="20%" class="rounded"
+				alt="titulo de ultrakill">
+		</div>
+		<div class="container d-flex justify-content-center">
+			<br>
+			<h3>conoce al creador</h3>
+			<p>Arsi Patala, también conocido como Hakita , es el creador, desarrollador principal y compositor de ULTRAKILL con sede en Finlandia</p>
+			<p>comenzó el desarrollo en febrero de 2018. En agosto de 2019 lanzó una demo preliminar de Ultrakill y New Blood Interactive adquirió el juego en mayo de 2020</p>
+		</div>
+	</div>
+	</div>
+	<br>
+	<br>
+</body>
+
+</html>

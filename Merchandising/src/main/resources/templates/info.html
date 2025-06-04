@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Listado de Categorías</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top text-center">
+		<div class="container-fluid justify-content-center">
+			<div class="navbar-header col-md-4">
+				<a class="navbar-brand" href="index.html" th:href="@{/}">Volver</a>
+			</div>
+			<div class="col-md-4 d-flex justify-content-center">
+				<img src="https://preview.redd.it/ill-try-to-make-the-logo-look-close-to-games-logo-close-as-v0-224ft8qrcsdb1.png?width=640&crop=smart&auto=webp&s=3054f77f368ad74e5eebed6c60d1c6766c46ea2d"
+					width="50%" class="rounded"
+					alt="tienda de ultrakill, originalmente hiba a ser de one punch man pero el logo OPPAI no es que sea muy apropiado">
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container-fluid text-center">
+		<div class="col-md-6 d-flex justify-content-center">
+			<img th:src="${producto.imagen}" width="70%"
+				class="rounded"
+				th:alt="${producto.altImagen}">
+		</div>
+		<div class=" col-md-6 d-flex justify-content-center">
+			<h1 th:text="${producto.nombre}"></h1>
+			<br>
+			<p th:text="${producto.descripcion}"></p>
+		</div>
+	</div>
+	<div class="container-fluid text-center">
+		<div class="col-md-1 d-flex justify-content-center">
+			<h2></h2>
+		</div>
+		<div class=" col-md-1 d-flex justify-content-center">
+			<h2>Precio:</h2>
+		</div>
+		<div class=" col-md-1 d-flex justify-content-center">
+			<h2 th:text="${producto.precio} + ' €'"></h2>
+		</div>
+		<div class=" col-md-3 d-flex justify-content-center">
+			<a href="datos.html" th:href="@{/datos}" class="btn btn btn-danger"><h2>comprar</h2></a>
+		</div>
+	</div>
+</body>
+
+</html>
