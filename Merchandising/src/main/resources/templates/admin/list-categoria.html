@@ -31,7 +31,7 @@
 				
                 <td>
                     <a th:href="@{/admin/categoria/editar/{id}(id=${cat.id})}" class="btn btn-sm btn-warning">Editar</a>
-                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" th:attr="data-id=${cat.id}">Eliminar</a>
+                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" th:attr="data-id=${cat.id}, data-size=${#lists.size(cat.productos)}">Eliminar</a>
                 </td>
             </tr>
         </tbody>
@@ -48,6 +48,7 @@
             </div>
             <div class="modal-body">
                 <p>¿Estás seguro que quieres borrar esta categoría? al borrar esta categoría también borrarás todos los productos relacionados a ella</p>
+				<p id="msg-cantidad-productos"> Cantidad de productos que se borrarán: </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
@@ -65,6 +66,10 @@
         deleteModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget;
             var id = button.getAttribute('data-id');
+			var cantidadProductos = button.getAttribute('data-size');
+			// Cambiar el texto del modal
+			var parrafo = document.getElementById('msg-cantidad-productos');
+			parrafo.textContent += cantidadProductos;
             confirmBtn.href = '/admin/categoria/borrar/' + id;
         });
     });

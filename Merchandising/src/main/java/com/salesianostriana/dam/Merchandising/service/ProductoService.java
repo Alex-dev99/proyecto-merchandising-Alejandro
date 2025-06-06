@@ -50,7 +50,6 @@ public class ProductoService {
     }
 
 	public List<Producto> findByCategoriaId(Long categoriaId) {
-		
-		return ProductoRepository.findByCategoriaId(categoriaId);
+				return repositorio.findByCategoriaId(categoriaId);
 	}
 }

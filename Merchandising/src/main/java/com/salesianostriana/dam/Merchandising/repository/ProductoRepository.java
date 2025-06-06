@@ -16,10 +16,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     List<Long> obtenerIds();
     
     @Query("select p from Producto p where p.categoria.id = ?1")
-	static
-    List<Producto> findByCategoriaId(Long categoriaId) {
-		return null;
-	}
+    List<Producto> findByCategoriaId(Long categoriaId);
     
     @Query("select count(p) from Producto p where p.categoria = ?1")
     int findNumProductosByCategoria(Categoria categoria);
