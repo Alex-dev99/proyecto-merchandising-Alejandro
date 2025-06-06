@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data @Table(name = "categorias") @NoArgsConstructor @AllArgsConstructor
@@ -27,5 +28,6 @@ public class Categoria {
 	    private String nombre;    
 	    
 	    @OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
+	    @ToString.Exclude
 	    private List <Producto> productos = new ArrayList <>();
 }
