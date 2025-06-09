@@ -17,25 +17,25 @@
 </head>
 
 <body>
-    <div class="offcanvas offcanvas-start" id="busqueda">
+    <div class="offcanvas offcanvas-start bg-black" id="busqueda">
         <div class="offcanvas-header">
             <h1 class="offcanvas-title">Categorias</h1>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+            <button type="button" class="btn-close text-reset bg-secondary" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
+                        <th class="bg-black text-white">Nombre</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr th:each="cat : ${categorias}">
-                        <td th:text="${cat.nombre}"></td>
+                        <td class="btn-danger bg-black text-light" ><a href="#" class="btn btn-sm text-light" th:text="${cat.nombre}"></a></td>
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">cerrar</button>
+            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">cerrar</button>
         </div>
     </div>
 
