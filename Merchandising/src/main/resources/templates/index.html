@@ -31,7 +31,7 @@
                 </thead>
                 <tbody >
                     <tr th:each="cat : ${categorias}">
-                        <td class="btn-danger bg-black text-light" ><a href="#" class="btn btn-sm text-light" th:text="${cat.nombre}"></a></td>
+                        <td class="btn-danger bg-black text-light" ><a href="filtrado.html" class="btn btn-sm text-light"th:href="@{/categoria/{id}(id=${cat.id})}" th:text="${cat.nombre}"></a></td>
                     </tr>
                 </tbody>
             </table>

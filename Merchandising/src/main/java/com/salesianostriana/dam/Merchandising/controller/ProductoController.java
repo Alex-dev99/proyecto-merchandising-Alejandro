@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.*;
 import java.beans.PropertyEditorSupport;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/producto")
-@RequiredArgsConstructor
 public class ProductoController {
 
     @Autowired
@@ -103,4 +103,12 @@ public class ProductoController {
         }
         return "redirect:/admin/producto/list-producto";
     }
+    
+    @GetMapping("/categoria/{id}")
+    public  String categoriaProducto(@PathVariable("id")long id, Model model) {
+    	List<Producto> productos = productoService.findByCategoriaId(id);
+    	model.addAttribute("productos", productos);
+    	return "filtrado";
+    }
+    
 }
