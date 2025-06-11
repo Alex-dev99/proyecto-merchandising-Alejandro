@@ -50,7 +50,7 @@
 
 					<div class="form-group">
 						<label for="precio">Precio (€)</label>
-						<input type="number" class="form-control" id="precio" th:field="*{precio}" step="0.01"
+						<input type="number" min="0" class="form-control" id="precio" th:field="*{precio}" step="0.01"
 							required />
 					</div>
 
