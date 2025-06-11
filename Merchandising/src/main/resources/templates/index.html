@@ -17,25 +17,25 @@
 </head>
 
 <body>
-    <div class="offcanvas offcanvas-start" id="busqueda">
+    <div class="offcanvas offcanvas-start bg-black" id="busqueda">
         <div class="offcanvas-header">
             <h1 class="offcanvas-title">Categorias</h1>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+            <button type="button" class="btn-close text-reset bg-secondary" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
+                        <th class="bg-black text-white">Nombre</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr th:each="cat : ${categorias}">
-                        <td th:text="${cat.nombre}"></td>
+                        <td class="btn-danger bg-black text-light" ><a href="filtrado.html" class="btn btn-sm text-light"th:href="@{/categoria/{id}(id=${cat.id})}" th:text="${cat.nombre}"></a></td>
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">cerrar</button>
+            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">cerrar</button>
         </div>
     </div>
 
@@ -46,9 +46,9 @@
                     width="60%" class="rounded" alt="logo de new blood interactive">
             </div>
             <div class="col-md-3 text-center">
-                <!--<button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">
+                <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">
                     <h4>Navegar por categorias</h4>
-                </button>-->
+                </button>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
                 <img src="https://preview.redd.it/ill-try-to-make-the-logo-look-close-to-games-logo-close-as-v0-224ft8qrcsdb1.png?width=640&crop=smart&auto=webp&s=3054f77f368ad74e5eebed6c60d1c6766c46ea2d"

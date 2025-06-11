@@ -38,7 +38,7 @@ public class HomeController {
         List<Producto> productos = productoService.findByCategoriaId(id);
         model.addAttribute("productos", productos);
         model.addAttribute("categorias", categoriaService.findAll());
-        return "index";
+        return "filtrado";
     }
 
     @GetMapping("/producto/{id}")
