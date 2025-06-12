@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.salesianostriana.dam.Merchandising.model.Categoria;
 import com.salesianostriana.dam.Merchandising.model.Producto;
 import com.salesianostriana.dam.Merchandising.service.CategoriaService;
 import com.salesianostriana.dam.Merchandising.service.ProductoService;
@@ -36,8 +37,10 @@ public class HomeController {
     @GetMapping("/categoria/{id}")
     public String productosPorCategoria(@PathVariable Long id, Model model) {
         List<Producto> productos = productoService.findByCategoriaId(id);
+        Categoria categoria = categoriaService.findById(id);
         model.addAttribute("productos", productos);
         model.addAttribute("categorias", categoriaService.findAll());
+        model.addAttribute("categoria", categoria);
         return "filtrado";
     }
 
