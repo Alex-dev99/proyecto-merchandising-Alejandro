@@ -69,19 +69,25 @@
 	<br>
 	<div class="container-fluid text-center">
 		<div class="row justify-content-center" th:if="${productos != null}">
-			<div class="col-md-3 mb-4" th:each="producto : ${productos}">
-				<div class="card text-bg-dark" style="width: 100%;">
+			<div class="col-md-3 mb-4 d-flex align-items-stretch" th:each="producto : ${productos}">
+				<div class="card w-100 text-bg-dark" style="width: 100%;">
 					<img class="card-img-top bg-white" th:src="${producto.imagen}" th:alt="${producto.altImagen}">
 					<div class="card-body">
 						<h4 class="card-title" th:text="${producto.nombre}">Nombre del producto</h4>
 						<div class="container-fluid text-center">
 							<div class=" col-md-12 d-flex justify-content-center">
-								<h3>¡En oferta!</h3>
+								<h3 th:if="${producto.enOferta()}">¡En oferta!</h3>
+								<br th:if="${!producto.enOferta()}">
 							</div>
-							<div class=" col-md-12 d-flex justify-content-center">
-								<h3 th:text="${producto.precio} + ' €'"></h3>
+							<div class="justify-content-center d-inline-block">
+								<h3 class=" col-md-12" th:if="${!producto.enOferta()}" th:text="${producto.precio} + ' €'"></h3>
+								<h3 class=" col-md-12" style="text-decoration: line-through" th:if="${producto.enOferta()}" th:text="${producto.precio} + ' €'"></h3>
+							</div>
+							<div class="justify-content-center d-inline-block">
+								<h3 class="text-danger col-md-12" th:if="${producto.enOferta()}" th:text="${#numbers.formatDecimal(producto.getPrecioFinal(), 0, 2)} + ' €'" ></h3>
 							</div>
 						</div>
+						<br th:if="${!producto.enOferta()}">
 						<a th:href="@{/admin/producto/info/{id}(id=${producto.id})}" class="btn btn-danger">Ir a la
 							pantalla de compra</a>
 					</div>

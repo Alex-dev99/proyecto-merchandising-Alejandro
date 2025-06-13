@@ -41,11 +41,7 @@ public class Producto {
     }
     
     public boolean enOferta() {
-    	if (descuento>0) {
-			return true;
-		}else {
-			return false;
-		}
+    	return descuento>0;
     }
     
 }

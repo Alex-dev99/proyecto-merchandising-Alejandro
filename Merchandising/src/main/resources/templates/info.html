@@ -47,10 +47,14 @@
 		<div class=" col-md-1 d-flex justify-content-center">
 			<h2>Precio:</h2>
 		</div>
-		<div class=" col-md-1 d-flex justify-content-center">
-			<h2 th:text="${producto.precio} + ' €'"></h2>
+		<div class=" col-md-1 d-flex justify-content-center d-inline-block">
+			<h2  th:if="${!producto.enOferta()}" th:text="${producto.precio} + ' €'"></h2>
+			<h2  style="text-decoration: line-through" th:if="${producto.enOferta()}" th:text="${producto.precio} + ' €'"></h2>
 		</div>
-		<div class=" col-md-3 d-flex justify-content-center">
+		<div class=" col-md-1 d-flex justify-content-center d-inline-block">
+			<h2 class="text-danger" th:if="${producto.enOferta()}" th:text="${#numbers.formatDecimal(producto.getPrecioFinal(), 0, 2)} + ' €'" ></h2>
+		</div>
+		<div class=" col-md-1 d-flex justify-content-center">
 			<a href="datos.html" th:href="@{/datos}" class="btn btn btn-danger"><h2>comprar</h2></a>
 		</div>
 	</div>

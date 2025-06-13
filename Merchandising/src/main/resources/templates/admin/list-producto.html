@@ -39,8 +39,8 @@
             <td th:text="${prod.precio} + ' €'"></td>
             <td th:text="${prod.descuento} + ' %'"></td>
             <td th:text="${prod.categoria?.nombre}"></td>
-            <!--<td th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></td>
-			<td>
+            <!--<td th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></td>-->
+			<!--<td>
 			  <span th:if="${prod.fechaAlta != null}" th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></span>
 			  <span th:unless="${prod.fechaAlta != null}">Sin fecha</span>
 			</td>
