@@ -136,11 +136,14 @@
 					<div class="card-body">
 						<h4 class="card-title" th:text="${producto.nombre}">Nombre del producto</h4>
 						<div class="container-fluid text-center">
-							<div class=" col-md-12 d-flex justify-content-center">
+							<div th:if="${producto.enOferta()}" class=" col-md-12 d-flex justify-content-center">
 								<h3>¡En oferta!</h3>
 							</div>
 							<div class=" col-md-12 d-flex justify-content-center">
 								<h3 th:text="${producto.precio} + ' €'"></h3>
+							</div>
+							<div th:if="${producto.enOferta()}">
+								<h3 class="text-danger" th:text="${#numbers.formatDecimal(producto.getPrecioFinal(), 0, 2)} + ' €'" ></h3>
 							</div>
 						</div>
 						<a th:href="@{/admin/producto/info/{id}(id=${producto.id})}" class="btn btn-danger">Ir a la
