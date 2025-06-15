@@ -26,7 +26,7 @@ public class Producto {
     @Column(length = 1000)
     private String altImagen;
 
-    //private LocalDate fechaAlta;
+    private LocalDate fechaAlta;
 
     @Column(nullable = false)
     private Double precio;
