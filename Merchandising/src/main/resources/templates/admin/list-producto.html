@@ -26,7 +26,7 @@
             <th>Precio</th>
 			<th>Descuento</th>
             <th>Categoría</th>
-           <!--<th>Fecha de Alta</th>-->
+           <th>Fecha de Alta</th>
             <th>Imagen</th>
             <th>Opciones</th>
         </tr>
@@ -39,7 +39,7 @@
             <td th:text="${prod.precio} + ' €'"></td>
             <td th:text="${prod.descuento} + ' %'"></td>
             <td th:text="${prod.categoria?.nombre}"></td>
-            <!--<td th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></td>-->
+            <td th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></td>
 			<!--<td>
 			  <span th:if="${prod.fechaAlta != null}" th:text="${#dates.format(prod.fechaAlta, 'dd/MM/yyyy')}"></span>
 			  <span th:unless="${prod.fechaAlta != null}">Sin fecha</span>
