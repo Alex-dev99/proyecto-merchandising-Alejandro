@@ -56,10 +56,9 @@ public class ProductoController {
     @PostMapping("/submit")
     public String submitProducto(@ModelAttribute Producto producto, Model model) {
 
-       /* if (producto.getFechaAlta() == null) {
+    	if (producto.getFechaAlta() == null) {
             producto.setFechaAlta(LocalDate.now());
           }
-        */
 
         Categoria categoria = categoriaService.findById(producto.getCategoria().getId());
         producto.setCategoria(categoria);

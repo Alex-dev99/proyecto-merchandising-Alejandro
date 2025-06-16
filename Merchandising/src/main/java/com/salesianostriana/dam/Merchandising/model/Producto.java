@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -25,8 +27,10 @@ public class Producto {
     private String imagen;
     @Column(length = 1000)
     private String altImagen;
-
-    private LocalDate fechaAlta;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Builder.Default
+    private LocalDate fechaAlta= LocalDate.now();
 
     @Column(nullable = false)
     private Double precio;
