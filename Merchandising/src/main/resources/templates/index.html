@@ -2,152 +2,168 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Tienda de Merchandising</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-        crossorigin="anonymous"></script>
-    <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-    </script>
+	<title>Tienda de Merchandising</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+		crossorigin="anonymous"></script>
+	<script>
+		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+			return new bootstrap.Tooltip(tooltipTriggerEl)
+		})
+	</script>
 </head>
 
 <body>
-    <div class="offcanvas offcanvas-start bg-black" id="busqueda">
-        <div class="offcanvas-header">
-            <h1 class="offcanvas-title">Categorias</h1>
-            <button type="button" class="btn-close text-reset bg-secondary" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="bg-black text-white">Nombre</th>
-                    </tr>
-                </thead>
-                <tbody >
-                    <tr th:each="cat : ${categorias}">
-                        <td class="btn-danger bg-black text-light" ><a href="filtrado.html" class="btn btn-sm text-light"th:href="@{/categoria/{id}(id=${cat.id})}" th:text="${cat.nombre}"></a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">cerrar</button>
-        </div>
-    </div>
+	<div class="offcanvas offcanvas-start bg-black" id="busqueda">
+		<div class="offcanvas-header">
+			<h1 class="offcanvas-title">Categorias</h1>
+			<button type="button" class="btn-close text-reset bg-secondary" data-bs-dismiss="offcanvas"></button>
+		</div>
+		<div class="offcanvas-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="bg-black text-white">Nombre</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cat : ${categorias}">
+						<td class="btn-danger bg-black text-light"><a href="filtrado.html" class="btn btn-sm text-light"
+								th:href="@{/categoria/{id}(id=${cat.id})}" th:text="${cat.nombre}"></a></td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="btn btn-danger" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#busqueda">cerrar</button>
+		</div>
+	</div>
 
-    <nav class="d-flex justify-content-center">
-        <div class="navbar navbar-expand-sm text-light bg-dark fixed-top">
-            <div class="col-md-1 text-center">
-                <img src="data:image/jpeg;base64,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"
-                    width="60%" class="rounded" alt="logo de new blood interactive">
-            </div>
-            <div class="col-md-3 text-center">
-                <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">
-                    <h4>Navegar por categorias</h4>
-                </button>
-            </div>
-            <div class="col-md-4 d-flex justify-content-center">
-                <img src="https://preview.redd.it/ill-try-to-make-the-logo-look-close-to-games-logo-close-as-v0-224ft8qrcsdb1.png?width=640&crop=smart&auto=webp&s=3054f77f368ad74e5eebed6c60d1c6766c46ea2d"
-                    width="68%" class="rounded" alt="logo de tienda">
-            </div>
-            <div class="col-md-1 text-center">
-                <a th:href="@{/admin/categoria/list-categoria}" class="btn btn-danger">
-                    <p>lista de categorias</p>
-                </a>
-            </div>
-            <div class="col-md-1 text-center">
-                <a th:href="@{/admin/producto/list-producto}" class="btn btn-danger">
-                    <p>lista de productos</p>
-                </a>
-            </div>
-        </div>
-    </nav>
+	<nav class="d-flex justify-content-center">
+		<div class="navbar navbar-expand-sm text-light bg-dark fixed-top">
+			<div class="col-md-1 text-center">
+				<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwsNCw0QDgsRCggJEBYIDQkKCxsICQgWIB0iIiAdHx8kKDQsJCYxJx8fLTItMSw3MDA3Iys/TT8uPzQ2OjcBCgoKDQ0OGhAQGjclHyUuLi41Li41LjcuLjcuNTc1LjU3NTc1Ny41Liw3LS4uLTU3Kzc0NTc3Nzc3NTcrKy4rLf/AABEIALgAuAMBEQACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAQIGBAUDB//EADoQAAIBAQUGBAMFBwUAAAAAAAABAgMEERJxkQUhMTJRUhMiQXIzYbEGNEJzoSRDYoHB0fEUU5Lh8P/EABsBAQACAwEBAAAAAAAAAAAAAAADBAIFBgEH/8QAMBEBAAIBAwEHAgYBBQAAAAAAAAECAwQRMQUSITIzQVFxE5EUIkJhsdHhI4GSocH/2gAMAwEAAhEDEQA/APyqpOWKXmbd7fG9sCMcur1AY5dXqAxy6vUBjl1eoDHLq9QGOXV6gMcur1AY5dXqAxy6vUBjl1eoDHLq9QGOXV6gMcur1AY5dXqAxy6vUBjl1eoDHLq9QGOXV6gMcur1AY5dXqAxy6vUCac5Yo+Zp3p8bmgKzfmeYEAAAAAAAAAAAAAAAAAAAAAAAAEwfmWYET5nmBAAAAAAAAAAAvQBb+G/LeB9YWatLlozl7aTkedqI9Wdcd7cVn7OiGybZLhZqi9L5Q8OK1MZyUj1T00OptxSfs5KtOUJyjJXTpt05Ljc0Z8q1qzWZrPMKh4AAAAAAAmHMswE+Z5gVAAAAHbW2XXjRjVUfEoSWKU6fndD3L0z4Edclbd0LefQ5sNYvMd0+sOIkVAAB9KCTnFNXptK58GYZJ2rMwsaWtbZq1txu2MYU48tGnH20Ipr9DX/AFLT6u2ro9PXikfZ9FVmuEsPt8hjvMpYx0rxEIdWb4zk85XnjNVcVmHrKbV+92j82f1ZtK+GHz7Uedf5n+XIZIQAAAAAAFocyzAT5nmBUAAAAa/Zk5Ro0mnheHitzNXbl3+njfDWJ9nyt2yrPXvaustpe/HCP7PUzXpmtCfHqJjus1es6Ljyfmw/ln29P8M9brDWs8rqkMOLfGovPSq5P1LdbRaN4c1mwZMNuzkjaXMZIX0s/wASOaI8vglZ0fn0+WyZrXegAAuKAym1fvdo/Nn9WbSvhh8/1HnX+Z/lyGSEAAAAAABaHMswInzPMCoAAAA1+z/gUvaau3L6BpvKr8OgxTJxJxcZRVSjPmpVFjpy/wDdTKtprO8I82HHlr2bxvDyLdsCMr5WaV0uP+kqy8z9svXJ/qW8eoie6zm9Z0W9PzYO+Pb1/wAvFp05QrKM4uFSErpQmsEokuTwS1ekiY1FYn3bBmtd4AAC4rMPWT2t97tH5s/qzaV8MPn2o86/zP8ALkMkIAAAAAAC0OZZgJ8zzAqAAAANfs/4FP2mrty+gabyq/DoMUwBACvCnVSVWCqOHJU5a1LJ9PkzOL2iNlbNpMWW0XtHfHqkwWQAAXFZgZPa33u0fmz+rNpXww+f6jzr/M/y5DJCAAAAAAAtDmWYET5nmBAAAAA1+z/gU/aau3Lv9N5Vfh0GKcAAAAAAAXFAZ7aOy7XO1V3GzzcJVZSUsOGLV5sa5KREby4jLo9RfLaa0nmfT93yjsK2v90o+6rCD+o+tT3I6XrJ/Q+Nr2baqKxVKMo0+HiLz0tVuM63rbiVfNpc2HzKzDkMkAAAAAJhzLMBPmeYFQAAABsNn/Ap+01duX0DTeVX4dBimAAAAAAAAAEXAXhOUXud1+5ripZr1Pd9nlqxaNpjeHg/aDZsIJV6McFGcvDq0Y8tCXo18n+hew5e1G08uR6r0+NPaL08M/8AUvDJ2oAAAC0OZZgRN+Z5gQAAAANhs/4FP2mrty+gabyq/DoMUwAAAAAAAAAAAPla4qVmtEXwlSlLJrevoS4Z2vCj1OkX0t4n0jdjLzYuHAAACYPzLMBPmeYFQAAABsNn/Ape01duXf6byq/DpMU6P67swJAAAAAAAAAAOXatdU7LWf4qkf8ATx6tv/q8mwV3vDW9WzRj0to9Z7mQNg4sAAALQ5lmBE+Z5gQAAAANhs74FL2mrty+gabyq/DpMUzzvtDOUbLBxd0lXTvW5ryssaesTMxLS9byXx0pas7Tu4rDttq5VVeuHiLmRlk08x31QaPrUT+XN93t0qsZq+MlKL9V6FbbZv6XreN6zvC54yAAAAAAAUrUaNWGCrT8SnfiTTwVab6pklMlqTvCrqtHi1Nezkjjhmdr7KlZpJqXi2Wrup1rsLv7WvRl7Hki8dzkNbor6W/Zt3xPEvPJFIAATDmWYCfM8wKgAAADR2Xa1mhShFyblGNzUY33FCcN5nh1+Lqmlpjis270y29QXCM3/LCe/h7vLdc00cby4Nq7XjXpKmqbjhn42KTvv3Nf1J8OKaTMy1HUuo01Va1rG20vKJ2ofezWupSd8JXfLimR3x1tytabWZtPP5JdT2zam+dR9PLFIjnT0iF2Osaq1ojeI/2aak24Rb3txTzKTrad9YXPGQAAAAAEToRrU50ZctdYU/8Abl+F6/VkmO/Ztuqa3TRqMNqTz6fLDyTTaaulF4Wu1mycIgABaHMswInzPMCAAAAAAAAAACYcVmY24lJijfJX5bakroR+UUv0NY+gU8MLnjIAAAAAAnc7/VO8DI7ZSVttKW6PizfyW82lPDDgNVWIz3iPeXGZIACYcyzATfmeYFQAAAAAAAAAD7WODnVhFcZSSI8s7Vla0WOb561j3bT/AAa13iQAAAAAAFKMd8t0ILxJPolvZ7EbzswyZIx0m9uIYivVdSpOb41JOo/le7zaRG3c+fWtNrTafV8z1iAWg/MswIm/M8wIAAAAAAAAAAOnZtVQr02+CZFmjekr3TckU1NZlsTXO4SAAAAAADxPtBtBKLowd85fFkvwrt/uW9Pj/VLnOta6Jj6FJ+f6/tny25wAATB+ZZgJ8zzAqAAAAAAAAAAWpc8c7jG/hlLgjfLWI924irkl0SRrH0CvELHj0AAAKznGKvlJRit7lJ4Yo9iJnhje9aR2rTtDwtpbc4xoO5cHX4SeX9y3j0/rZzmv6zvvTB/y/p4X+erZac8AAAFocyzAT5nmBUAAAAAAAAAA+1iu8an7kR5fBK3odvxFN229f0Na7t5Vo27QhUcUnUUXc6kd0f5FiNPeY3afJ1rT0v2Y3n93PbNvxcGqMWqkt3iT3Knl8zPHp533sq6vrdZp2cHM+rxna619/iyb485Y+nT2aT8ZqN9+3Kyt9oX76f8AyPPo09mcdQ1Ufrl8qtac355ub/iliuM61rHEIMmbJk772mVD1EAAAAC0OZZgRPmeYFQAAAAAAAAADp2bDFaKa/iTIs07Uld6dXtamsQ1W1a7p2WtJO6dyoxfqnJ3fS8qYa9q8Oo6rmnFprTHM933Yw2DigAAAAAAAAAAtDmWYCfM8wKgAAAAAAAAAHt/ZqzXzlUfCHkjmVNTb9Loeh6feZyz8PQ+0j/Ys60FnukY6bxSs9en/QrH7/8AjKF1yoAAAAAAAAAAWhzLMCJ8zzAqAAAAAAAAAAe1sLaVOlFwqPDFvEp8UipmxWmd4dB0nqGLFj+nknZ8dt7TVocYwTVCk3O+W51H1JcOPsR38qfU9fGpvEU8MPLJmrAAAAAAAAAAC0OZZgRN+Z5gQAAAAAAAAAAAAAAAAAAAAAAAATB+ZZgWq05KUk4tNNq665oCuCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9AGCXa9ALUqcnKKUW22ldde2B//9k="
+					width="60%" class="rounded" alt="logo de new blood interactive">
+			</div>
+			<div class="col-md-3 text-center">
+				<button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#busqueda">
+					<h4>Navegar por categorias</h4>
+				</button>
+			</div>
+			<div class="col-md-4 d-flex justify-content-center">
+				<img src="https://preview.redd.it/ill-try-to-make-the-logo-look-close-to-games-logo-close-as-v0-224ft8qrcsdb1.png?width=640&crop=smart&auto=webp&s=3054f77f368ad74e5eebed6c60d1c6766c46ea2d"
+					width="68%" class="rounded" alt="logo de tienda">
+			</div>
+			<div class="col-md-1 text-center">
+				<a th:href="@{/admin/categoria/list-categoria}" class="btn btn-danger">
+					<p>lista de categorias</p>
+				</a>
+			</div>
+			<div class="col-md-1 text-center">
+				<a th:href="@{/admin/producto/list-producto}" class="btn btn-danger">
+					<p>lista de productos</p>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom d-flex justify-content-center">
-        <div class="col-md-2 text-end text-light">
-            <h5>Aprende más de nosotros:</h5>
-        </div>
-        <div class="col-md-1 text-center">
-            <a href="nosotros.html" th:href="@{/nosotros}">quienes somos</a>
-        </div>
-        <div class="col-md-3 text-end text-light">
-            <h5>Nuestras redes sociales:</h5>
-        </div>
-        <div class="col-md-1 text-center">
-            <a href="https://x.com/twitter?lang=es">X</a>
-        </div>
-        <div class="col-md-1 text-start">
-            <a href="https://www.instagram.com/">Instagram</a>
-        </div>
-        <div class="col-md-0 text-center">
-            <a href="https://www.facebook.com/">Facebook</a>
-        </div>
-    </nav>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom d-flex justify-content-center">
+		<div class="col-md-2 text-end text-light">
+			<h5>Aprende más de nosotros:</h5>
+		</div>
+		<div class="col-md-1 text-center">
+			<a href="nosotros.html" th:href="@{/nosotros}">quienes somos</a>
+		</div>
+		<div class="col-md-3 text-end text-light">
+			<h5>Nuestras redes sociales:</h5>
+		</div>
+		<div class="col-md-1 text-center">
+			<a href="https://x.com/twitter?lang=es">X</a>
+		</div>
+		<div class="col-md-1 text-start">
+			<a href="https://www.instagram.com/">Instagram</a>
+		</div>
+		<div class="col-md-0 text-center">
+			<a href="https://www.facebook.com/">Facebook</a>
+		</div>
+	</nav>
 
-    <br><br><br><br><br>
+	<br><br><br><br><br>
 
-    <div id="demo" class="carousel slide bg-dark" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-        </div>
+	<div id="demo" class="carousel slide bg-dark" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+		</div>
 
-        <div class="carousel-inner container">
-            <div class="carousel-item active">
-                <img src="https://lunar-merch-2.b-cdn.net/ultrakill.shop/uploads/banner-1747325099.png?w=1920"
-                    alt="Ultrashop" class="d-block w-99">
-            </div>
-            <div class="carousel-item">
-                <img src="https://external-preview.redd.it/ultrakill-dev-says-its-fine-to-pirate-his-game-if-you-dont-v0-LvP2yTp1YtmKWxaosI0zXPOSzA8qQHucos7pmoEfrq0.jpg?width=1080&crop=smart&auto=webp&s=f9de3e2ebcd69da94cf3bcb1e2c70b6bb73bb92d"
-                    alt="V1 ultrakill" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="https://newbloodstore.com/cdn/shop/files/New_Blood_Store_collage_final_final_1200x628.png?v=1669372840"
-                    alt="tienda new blood" class="d-block w-100">
-            </div>
-        </div>
+		<div class="carousel-inner container">
+			<div class="carousel-item active">
+				<img src="https://lunar-merch-2.b-cdn.net/ultrakill.shop/uploads/banner-1747325099.png?w=1920"
+					alt="Ultrashop" class="d-block w-99">
+			</div>
+			<div class="carousel-item">
+				<img src="https://external-preview.redd.it/ultrakill-dev-says-its-fine-to-pirate-his-game-if-you-dont-v0-LvP2yTp1YtmKWxaosI0zXPOSzA8qQHucos7pmoEfrq0.jpg?width=1080&crop=smart&auto=webp&s=f9de3e2ebcd69da94cf3bcb1e2c70b6bb73bb92d"
+					alt="V1 ultrakill" class="d-block w-100">
+			</div>
+			<div class="carousel-item">
+				<img src="https://newbloodstore.com/cdn/shop/files/New_Blood_Store_collage_final_final_1200x628.png?v=1669372840"
+					alt="tienda new blood" class="d-block w-100">
+			</div>
+		</div>
 
-        <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next bg-dark" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
+		<button class="carousel-control-prev bg-dark" type="button" data-bs-target="#demo" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button class="carousel-control-next bg-dark" type="button" data-bs-target="#demo" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+	</div>
 
-    <br>
-    <div class="container-fluid text-center">
-        <h1>Nuestros ultra-productos</h1>
-    </div>
-    <br>
+	<br>
+	<div class="container-fluid text-center">
+		<h1>Nuestros ultra-productos</h1>
+	</div>
+	<br>
 
-    <div class="container-fluid text-center">
-        <div class="row justify-content-center" th:if="${productos != null}">
-            <div class="col-md-3 mb-4" th:each="producto : ${productos}">
-                <div class="card text-bg-dark" style="width: 100%;">
-                    <img class="card-img-top bg-white" th:src="${producto.imagen}" th:alt="${producto.altImagen}">
-                    <div class="card-body">
-                        <h4 class="card-title" th:text="${producto.nombre}">Nombre del producto</h4>
-                        <a th:href="@{/admin/producto/editar/{id}(id=${producto.id})}" class="btn btn-danger">Editar</a>
-                        <a th:href="@{/admin/producto/info/{id}(id=${producto.id})}" class="btn btn-danger">ver informacion</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container-fluid text-center">
+		<div class="row justify-content-center" th:if="${productos != null}">
+			<div class="col-md-3 mb-4 d-flex align-items-stretch" th:each="producto : ${productos}">
+				<div class="card w-100 text-bg-dark" style="width: 100%;">
+					<img class="card-img-top bg-white" th:src="${producto.imagen}" th:alt="${producto.altImagen}">
+					<div class="card-body">
+						<h4 class="card-title" th:text="${producto.nombre}">Nombre del producto</h4>
+						<div class="container-fluid text-center">
+							<div class=" col-md-12 d-flex justify-content-center">
+								<h3 class="text-warning" th:if="${producto.enOferta()}">¡En oferta!</h3>
+								<br th:if="${!producto.enOferta()}">
+							</div>
+							<div class="justify-content-center d-inline-block">
+								<h3 class=" col-md-12" th:if="${!producto.enOferta()}" th:text="${producto.precio} + ' €'"></h3>
+								<h3 class=" col-md-12" style="text-decoration: line-through" th:if="${producto.enOferta()}" th:text="${producto.precio} + ' €'"></h3>
+							</div>
+							<div class="justify-content-center d-inline-block">
+								<h3 class="text-danger col-md-12" th:if="${producto.enOferta()}" th:text="${#numbers.formatDecimal(producto.getPrecioFinal(), 0, 2)} + ' €'" ></h3>
+							</div>
+						</div>
+						<br th:if="${!producto.enOferta()}">
+						<a th:href="@{/admin/producto/info/{id}(id=${producto.id})}" class="btn btn-danger">Ir a la
+							pantalla de compra</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="text-center mt-4">
-        <!--<a href="todos.html" th:href="@{/todos}" class="btn btn-danger">
+	<div class="text-center mt-4">
+		<!--<a href="todos.html" th:href="@{/todos}" class="btn btn-danger">
             <h1>Ver todo</h1>
         </a>-->
-    </div>
+	</div>
 
-    <br><br><br><br>
+	<br><br><br><br>
 </body>
 
 </html>

@@ -58,6 +58,7 @@ public class ProductoController {
 
        /* if (producto.getFechaAlta() == null) {
             producto.setFechaAlta(LocalDate.now());
+          }
         */
 
         Categoria categoria = categoriaService.findById(producto.getCategoria().getId());

@@ -26,13 +26,22 @@ public class Producto {
     @Column(length = 1000)
     private String altImagen;
 
-    //private LocalDate fechaAlta;
+    private LocalDate fechaAlta;
 
     @Column(nullable = false)
     private Double precio;
+    private Double descuento;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-
+    
+    public double getPrecioFinal() {
+    	return precio-precio*descuento;
+    }
+    
+    public boolean enOferta() {
+    	return descuento>0;
+    }
+    
 }
