@@ -76,7 +76,7 @@
 						<h4 class="card-title" th:text="${producto.nombre}">Nombre del producto</h4>
 						<div class="container-fluid text-center">
 							<div class=" col-md-12 d-flex justify-content-center">
-								<h3 th:if="${producto.enOferta()}">¡En oferta!</h3>
+								<h3 class="text-warning" th:if="${producto.enOferta()}">¡En oferta!</h3>
 								<br th:if="${!producto.enOferta()}">
 							</div>
 							<div class="justify-content-center d-inline-block">
