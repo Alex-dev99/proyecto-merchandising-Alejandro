@@ -34,7 +34,7 @@ public class Producto {
 
     @Column(nullable = false)
     private Double precio;
-    private int descuento;
+    private Double descuento;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id")
