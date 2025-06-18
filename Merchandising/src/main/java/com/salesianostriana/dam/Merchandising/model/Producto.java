@@ -41,7 +41,7 @@ public class Producto {
     private Categoria categoria;
     
     public double getPrecioFinal() {
-    	return precio-precio*descuento;
+    	return precio-precio*(descuento/100);
     }
     
     public boolean enOferta() {
